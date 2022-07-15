@@ -42,6 +42,7 @@ function checkAnswer(currentLevel) {
         setTimeout(function() {
             $("body").removeClass("game-over");
         }, 200);
+        startOver();
     }
 }
 
@@ -64,3 +65,9 @@ $(document).on("keypress", function(event) {
         started = true;
     }
 });
+
+function startOver() {
+    started = false;
+    gamePattern = [];
+    level = 0;
+}
