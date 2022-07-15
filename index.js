@@ -3,7 +3,8 @@ let gamePattern = [];
 let buttonColors = ["red", "blue", "green", "yellow"];
 let userClickedPattern = [];
 let level = 0;
-let started = false;    
+let started = false;
+let startOverr = false;    
 
 function nextSequence() {
     userClickedPattern = [];
@@ -43,6 +44,7 @@ function checkAnswer(currentLevel) {
             $("body").removeClass("game-over");
         }, 200);
         startOver();
+        startOverr = true;
     }
 }
 
@@ -59,7 +61,7 @@ function animatePress(currentColor) {
 }
 
 $(document).on("keypress", function(event) {
-    if(!started) {
+    if(!started && (startOverr || event.key === 'a' || event.key === 'A')) {
         $("h1").text("Level " + level);
         nextSequence();
         started = true;
